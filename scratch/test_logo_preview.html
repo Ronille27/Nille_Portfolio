@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Logo Test Preview</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .preview-row {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .light-bg {
+      background: #faf8f5;
+      color: #121316;
+    }
+
+    .dark-bg {
+      background: #0b0c0f;
+      color: #f2f4f8;
+    }
+
+    /* Option 1: img with CSS filter */
+    .logo-img-natural {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .dark-bg .logo-img-natural {
+      filter: invert(1);
+    }
+
+    /* Option 2: Mask image with accent crimson */
+    .logo-mask-crimson {
+      height: 38px;
+      width: 32px;
+      background-color: #e63946;
+      -webkit-mask: url('../images/logo%20crop.png') no-repeat center / contain;
+      mask: url('../images/logo%20crop.png') no-repeat center / contain;
+    }
+
+    .dark-bg .logo-mask-crimson {
+      background-color: #ff4d5a;
+    }
+
+    /* Option 3: Mask image with currentColor / text-primary */
+    .logo-mask-text {
+      height: 38px;
+      width: 32px;
+      background-color: currentColor;
+      -webkit-mask: url('../images/logo%20crop.png') no-repeat center / contain;
+      mask: url('../images/logo%20crop.png') no-repeat center / contain;
+    }
+
+    /* Option 4: Inside artist stamp box (with border like the old RA stamp) */
+    .logo-stamp-container {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid #e63946;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px;
+    }
+
+    .logo-stamp-container .logo-mask-crimson {
+      width: 26px;
+      height: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Light Mode Previews</h2>
+  <div class="preview-row light-bg">
+    <div>
+      <p style="font-size:12px;color:#888;">1. Black Ink</p>
+      <img src="../images/logo%20crop.png" class="logo-img-natural">
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">2. Crimson Color</p>
+      <div class="logo-mask-crimson"></div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">3. CurrentColor</p>
+      <div class="logo-mask-text"></div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">4. Stamp Box</p>
+      <div class="logo-stamp-container">
+        <div class="logo-mask-crimson"></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">5. Boxed Version (Logo box-crop)</p>
+      <img src="../images/Logo%20box-crop.png" class="logo-img-natural">
+    </div>
+  </div>
+
+  <h2>Dark Mode Previews</h2>
+  <div class="preview-row dark-bg">
+    <div>
+      <p style="font-size:12px;color:#888;">1. Inverted White</p>
+      <img src="../images/logo%20crop.png" class="logo-img-natural">
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">2. Crimson Color</p>
+      <div class="logo-mask-crimson"></div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">3. CurrentColor (White)</p>
+      <div class="logo-mask-text"></div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">4. Stamp Box</p>
+      <div class="logo-stamp-container">
+        <div class="logo-mask-crimson"></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:#888;">5. Boxed Version (Logo box-crop)</p>
+      <img src="../images/Logo%20box-crop.png" class="logo-img-natural">
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+{
+  "projectName": "Nille_Portfolio",
+  "languages": [
+    "JavaScript"
+  ],
+  "frameworks": [
+    "Standard Web / DOM"
+  ],
+  "backend": [
+    "Node.js API"
+  ],
+  "database": [
+    "SQL / Relational DB"
+  ],
+  "testing": [
+    "Unit & E2E Testing"
+  ],
+  "auth": [],
+  "styling": [],
+  "packageManager": "npm",
+  "directories": [
+    "images"
+  ],
+  "files": [],
+  "recommendedSkills": [
+    "codebase-intelligence",
+    "security-audit",
+    "performance-profiling",
+    "testing"
+  ],
+  "agentSpecializations": {}
+}
