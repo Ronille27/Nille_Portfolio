@@ -100,8 +100,8 @@ const ARTWORKS = [
   {
     id: 'denji-bad-habit',
     title: 'Bad Habit — Denji (Chainsaw Man)',
-    category: 'Character Art',
-    filterCategory: 'character-art',
+    category: 'Fan Art',
+    filterCategory: 'fan-art',
     year: '2022',
     medium: 'Full Digital Illustration & Poster Design',
     primaryFile: 'Can I bite your tongue like my bad habitDenji fan art Reference- Bad habit by Steve LacyFirst.webp',
@@ -113,7 +113,7 @@ const ARTWORKS = [
     aspectRatio: '4:5',
     caption: 'Full digital illustration and poster inspired by the cover art of Steve Lacy\'s "Bad Habit" featuring Denji.',
     description: 'A full digital illustration and editorial poster design directly inspired by the cover image of Steve Lacy\'s hit song "Bad Habit", starring Denji from Chainsaw Man. Combines graphic color blocking, typography, and raw character expression.',
-    tags: ['Chainsaw Man', 'Denji', 'Steve Lacy', 'Digital Illustration', 'Poster Design']
+    tags: ['Chainsaw Man', 'Denji', 'Steve Lacy', 'Digital Illustration', 'Poster Design', 'Fan Art']
   },
   {
     id: 'cyborg-oc',
@@ -243,8 +243,8 @@ const ARTWORKS = [
   {
     id: 'nero-dmc',
     title: 'Devil Trigger — Nero (Devil May Cry 5)',
-    category: 'Character Art',
-    filterCategory: 'character-art',
+    category: 'Fan Art',
+    filterCategory: ['fan-art', 'character-art'],
     year: '2022',
     medium: 'Digital Character Painting',
     primaryFile: 'Im back! 🦾After a long hiatus, Im finally posting again.Heres my fanart of Nero from Devil .webp',
@@ -261,7 +261,7 @@ const ARTWORKS = [
     aspectRatio: '3:4',
     caption: 'Vibrant action portrait of Nero wielding the Devil Breaker prosthetic arm in saturated dynamic hues.',
     description: 'Painted following an artistic hiatus to celebrate Devil May Cry 5. Highlights the mechanical complexity of Nero\'s prosthetic arm alongside saturated comic-style facial rendering.',
-    tags: ['Devil May Cry', 'Nero', 'Gaming Fan Art', 'Digital Painting']
+    tags: ['Devil May Cry', 'Nero', 'Gaming Fan Art', 'Digital Painting', 'Fan Art']
   },
   {
     id: 'rock-lee',
@@ -281,8 +281,8 @@ const ARTWORKS = [
   {
     id: 'lara-tybur',
     title: 'Lara Tybur — War Hammer Titan Collab',
-    category: 'Collaborations',
-    filterCategory: 'collaborations',
+    category: 'Fan Art',
+    filterCategory: 'fan-art',
     year: '2022',
     medium: 'Digital Titan Portrait & Hard Surface Study',
     primaryFile: 'First Digit Art CollaborationTheme- Attack on titanCharacters and ArtistsMine - Lara Tybur (War.webp',
@@ -291,13 +291,13 @@ const ARTWORKS = [
     aspectRatio: '4:5',
     caption: 'First digital art collaboration piece depicting Lara Tybur\'s War Hammer Titan in stark alabaster armor.',
     description: 'Ronille\'s debut entry into community digital art collaborations. Explored hard-surface bone armor styling and crimson backdrop contrast for the War Hammer Titan from Attack on Titan.',
-    tags: ['Attack on Titan', 'War Hammer Titan', 'Community Collab', 'Digital Art']
+    tags: ['Attack on Titan', 'War Hammer Titan', 'Community Collab', 'Digital Art', 'Fan Art']
   },
   {
     id: 'aot-project-wit',
     title: 'Mikasa Ackerman — Studio WIT Style (Project WIT)',
-    category: 'Collaborations',
-    filterCategory: 'collaborations',
+    category: 'Fan Art',
+    filterCategory: 'fan-art',
     year: '2022',
     medium: 'Keyframe Drawing & Colored Digital Illustration',
     primaryFile: 'Got a chance to be part of this fan animation project-@attackontitan_projectwit Im part of the.webp',
@@ -306,7 +306,7 @@ const ARTWORKS = [
     aspectRatio: '4:5',
     caption: 'Contributed keyframe drawing and colored illustration for @attackontitan_projectwit featuring Mikasa in The Final Season in Studio WIT style.',
     description: 'Contributed to the collaborative @attackontitan_projectwit global fan animation project with a single keyframe drawing and a full-colored illustration. Depicts Mikasa Ackerman from Attack on Titan: The Final Season reimagined in the classic Studio WIT animation aesthetic.',
-    tags: ['Attack on Titan', 'Mikasa Ackerman', 'Studio WIT', 'Project WIT', 'Keyframe Art', 'Final Season']
+    tags: ['Attack on Titan', 'Mikasa Ackerman', 'Studio WIT', 'Project WIT', 'Keyframe Art', 'Final Season', 'Fan Art']
   },
   {
     id: 'bleach-tokyo-ghoul',
@@ -326,8 +326,8 @@ const ARTWORKS = [
   {
     id: 'kurama-inktober',
     title: 'Baby Kurama — Inktober Day 21 (Fuzzy)',
-    category: 'Fan Art',
-    filterCategory: 'fan-art',
+    category: 'Character Art',
+    filterCategory: 'character-art',
     year: '2021',
     medium: 'Traditional Ink Stippling & Hatching',
     primaryFile: 'INKTOBER DAY 21 - FUZZYBaby Kurama#inktober #inktober2021 #phxartfeatur #phx_artfeature #arttsh.webp',
@@ -336,7 +336,7 @@ const ARTWORKS = [
     aspectRatio: '1:1',
     caption: 'Intricate traditional ink stippling and micro-hatching depicting the nine-tailed beast in its diminutive form.',
     description: 'Inktober Day 21 challenge with the prompt "Fuzzy". Rendered entirely by hand using technical ink pens, layering thousands of fine fur strokes and stippled shadow points to create tangible depth.',
-    tags: ['Inktober', 'Traditional Ink', 'Naruto', 'Stippling', 'Fan Art']
+    tags: ['Inktober', 'Traditional Ink', 'Naruto', 'Stippling', 'Character Art']
   },
   {
     id: 'backpack-inktober',
@@ -356,8 +356,8 @@ const ARTWORKS = [
   {
     id: 'denji-chainsaw-pencil',
     title: 'Chainsaw Devil — Denji (Chainsaw Man)',
-    category: 'Fan Art',
-    filterCategory: 'fan-art',
+    category: 'Traditional Art',
+    filterCategory: 'traditional',
     year: '2022',
     medium: '0.5 Mechanical Pencil & 6B Pencil on Vellum Board',
     primaryFile: 'Chainsaw man fanart🔥Character- DenjiMaterials- 0.5 mechanical pencil and 6b pencil on vellum bo.jpg',
@@ -371,7 +371,7 @@ const ARTWORKS = [
     aspectRatio: '3:4',
     caption: 'Intricate traditional pencil drawing of Denji in Chainsaw Devil form, shaded on vellum board.',
     description: 'A high-intensity traditional pencil illustration of Denji from Chainsaw Man. Rendered using 0.5mm mechanical pencils for razor-sharp mechanical teeth and chain linkages, layered with deep 6B graphite values on smooth vellum board.',
-    tags: ['Chainsaw Man', 'Denji', 'Traditional Pencil', 'Graphite Art', 'Fan Art']
+    tags: ['Chainsaw Man', 'Denji', 'Traditional Pencil', 'Graphite Art']
   },
   {
     id: 'freehand-portrait-study',
@@ -396,8 +396,8 @@ const ARTWORKS = [
   {
     id: 'rock-lee-gaara',
     title: 'Leaf Hurricane — Rock Lee vs. Gaara (Naruto)',
-    category: 'Fan Art',
-    filterCategory: 'fan-art',
+    category: 'Traditional Art',
+    filterCategory: 'traditional',
     year: '2021',
     medium: 'Traditional Graphite Pencil on Paper',
     primaryFile: 'Photography is an immediate reaction, Drawing is a meditation - Henri Cartier-Bresson#tebandw @t.jpg',
@@ -411,7 +411,7 @@ const ARTWORKS = [
     aspectRatio: '4:5',
     caption: 'Dynamic traditional pencil drawing capturing Rock Lee\'s extreme foreshortened kick against Gaara.',
     description: '"Drawing is a meditation." A dynamic traditional graphite illustration paying tribute to the legendary Chunin Exams battle between Rock Lee and Gaara from Naruto. Employs dramatic wide-angle perspective, motion sweeps, and intricate pencil tonal gradations.',
-    tags: ['Naruto', 'Rock Lee', 'Gaara', 'Traditional Pencil', 'Foreshortening', 'Fan Art']
+    tags: ['Naruto', 'Rock Lee', 'Gaara', 'Traditional Pencil', 'Foreshortening']
   }
 ];
 
