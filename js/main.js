@@ -34,18 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Bind hero artwork click
-    const heroFrame = document.getElementById('hero-art-frame');
-    if (heroFrame) {
-      heroFrame.addEventListener('click', () => {
-        lightboxInstance.open('miles-morales');
-      });
-      heroFrame.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          lightboxInstance.open('miles-morales');
-        }
-      });
+    // Initialize Hero Featured Artworks Rotator (cycles every few seconds & on click)
+    if (typeof initHeroFeaturedRotator === 'function') {
+      initHeroFeaturedRotator(ARTWORKS);
     }
 
     // About section interactive logo & artwork orbit constellation

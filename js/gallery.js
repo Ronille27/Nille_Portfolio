@@ -21,13 +21,14 @@ class ArtworkGallery {
     if (!this.filterContainer) return;
 
     // Calculate category counts
+    const traditionalDrawings = this.getTraditionalDrawings();
     const counts = {
       'all': this.artworks.length,
-      'fan-art': this.artworks.filter(a => a.filterCategory === 'fan-art').length,
-      'character-art': this.artworks.filter(a => a.filterCategory === 'character-art').length,
-      'original-concept': this.artworks.filter(a => a.filterCategory === 'original-concept').length,
-      'surrealism': this.artworks.filter(a => a.filterCategory === 'surrealism').length,
-      'traditional': this.artworks.filter(a => a.filterCategory === 'traditional').length
+      'fan-art': this.artworks.filter(a => this.matchesFilter(a, 'fan-art')).length,
+      'character-art': this.artworks.filter(a => this.matchesFilter(a, 'character-art')).length,
+      'original-concept': this.artworks.filter(a => this.matchesFilter(a, 'original-concept')).length,
+      'surrealism': this.artworks.filter(a => this.matchesFilter(a, 'surrealism')).length,
+      'traditional': traditionalDrawings.length
     };
 
     const categories = [
@@ -36,7 +37,7 @@ class ArtworkGallery {
       { id: 'character-art', label: 'Character Art' },
       { id: 'original-concept', label: 'Original Concepts' },
       { id: 'surrealism', label: 'Surrealism' },
-      { id: 'traditional', label: 'Traditional Inks' }
+      { id: 'traditional', label: 'Traditional Drawings' }
     ];
 
     this.filterContainer.innerHTML = '';
@@ -85,11 +86,49 @@ class ArtworkGallery {
     }, 200);
   }
 
+  getTraditionalDrawings() {
+    return this.artworks
+      .filter(a => a.hasTraditionalDrawing)
+      .map(art => {
+        const isStandalone = art.primaryFile === art.traditionalFile;
+        return {
+          id: art.id + (isStandalone ? '' : '-trad'),
+          originalId: art.id,
+          title: art.traditionalTitle || art.title,
+          category: art.traditionalType === 'pencil' ? 'Traditional Pencil' : 'Traditional Inks',
+          filterCategory: 'traditional',
+          year: art.year,
+          medium: art.traditionalMedium || art.medium,
+          primaryFile: art.traditionalFile,
+          hasProcess: !isStandalone,
+          processFile: isStandalone ? null : art.primaryFile,
+          processType: 'ink-to-color',
+          processLabel: 'Digital Colored Version',
+          primaryLabel: 'Traditional Drawing',
+          featured: false,
+          aspectRatio: art.aspectRatio,
+          caption: isStandalone ? (art.caption || art.description) : `Uncolored traditional ${art.traditionalType === 'pencil' ? 'pencil drawing' : 'ink linework'} foundation for ${art.title}.`,
+          description: art.description,
+          tags: [...(art.tags || []), 'Traditional Drawing', art.traditionalType === 'pencil' ? 'Pencil Drawing' : 'Ink Linework']
+        };
+      });
+  }
+
+  matchesFilter(art, filterId) {
+    if (Array.isArray(art.filterCategory)) {
+      return art.filterCategory.includes(filterId);
+    }
+    return art.filterCategory === filterId;
+  }
+
   getFilteredArtworks() {
     if (this.activeFilter === 'all') {
       return this.artworks;
     }
-    return this.artworks.filter(a => a.filterCategory === this.activeFilter);
+    if (this.activeFilter === 'traditional') {
+      return this.getTraditionalDrawings();
+    }
+    return this.artworks.filter(a => this.matchesFilter(a, this.activeFilter));
   }
 
   render() {
@@ -97,6 +136,10 @@ class ArtworkGallery {
 
     const filtered = this.getFilteredArtworks();
     this.gridContainer.innerHTML = '';
+
+    if (this.counterEl) {
+      this.counterEl.textContent = `${filtered.length} Works`;
+    }
 
     if (filtered.length === 0) {
       this.gridContainer.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No artworks found in this category.</div>`;
@@ -113,10 +156,11 @@ class ArtworkGallery {
       // Process pill badge
       let processBadgeHtml = '';
       if (art.hasProcess) {
+        const badgeLabel = art.processLabel === 'Digital Colored Version' ? 'Digital Color' : 'Process';
         processBadgeHtml = `
           <div class="art-card-process-badge" title="${art.processLabel || 'Process View'} available">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <span>Process</span>
+            <span>${badgeLabel}</span>
           </div>
         `;
       }
@@ -151,15 +195,15 @@ class ArtworkGallery {
         </div>
       `;
 
-      // Open lightbox on click or enter key
+      // Open lightbox on click or enter key with current filtered list
       card.addEventListener('click', () => {
-        this.lightbox.open(art.id);
+        this.lightbox.open(art.id, filtered);
       });
 
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          this.lightbox.open(art.id);
+          this.lightbox.open(art.id, filtered);
         }
       });
 

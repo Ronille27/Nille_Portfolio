@@ -193,24 +193,25 @@
           </div>
         </div>
 
-        <!-- Right: Prominent Curated Artwork Showcase (Miles Morales Spider-Verse) -->
+        <!-- Right: Prominent Curated Artwork Showcase (Hero Featured Artworks Rotator) -->
         <div class="hero-artwork-wrapper reveal stagger-2">
           <div id="hero-art-frame" class="hero-art-frame" role="button" tabindex="0"
-            aria-label="View Spider-Man Across the Spider-Verse artwork by Ronille Alcala">
-            <div class="hero-floating-badge">
+            aria-label="Featured Artworks showcase — Click to view next artwork"
+            title="Click to view next artwork">
+            <div class="hero-floating-badge" id="hero-floating-badge">
               <span class="pulse-dot"></span>
-              <span>Featured Artwork</span>
+              <span>Featured Artworks</span>
             </div>
-            <img
+            <img id="hero-art-img"
               src="images/HELLO!%20Im%20back%20with%20Miles!%20Havent%20watched%20the%20movie%20yet%20but%20Ive%20seen%20numerous%20artists%20creati.webp"
-              alt="Spider-Man Across the Spider-Verse Miles Morales digital illustration by Ronille Alcala"
+              alt="Across the Spider-Verse — Miles Morales digital illustration by Ronille Alcala"
               class="hero-art-img" width="1080" height="1350" />
             <div class="hero-art-meta">
               <div>
-                <div class="hero-art-title">Across the Spider-Verse</div>
-                <div class="hero-art-sub">Miles Morales &bull; Digital Illustration</div>
+                <div class="hero-art-title" id="hero-art-title">Across the Spider-Verse</div>
+                <div class="hero-art-sub" id="hero-art-sub">Miles Morales &bull; Digital Illustration</div>
               </div>
-              <div style="font-family: var(--font-mono); font-size: 0.78rem; opacity: 0.85;">2023</div>
+              <div id="hero-art-year" style="font-family: var(--font-mono); font-size: 0.78rem; opacity: 0.85;">2023</div>
             </div>
           </div>
         </div>
@@ -296,14 +297,14 @@
                   <span class="orbit-tooltip">AKIRA &bull; Tetsuo Shima</span>
                 </button>
 
-                <!-- 7. Cybernetic Genesis OC -->
+                <!-- 7. Original Cyborg OC -->
                 <button type="button" class="orbit-art-icon"
                   style="--pop-x: 130px; --pop-y: -115px; --pop-delay: 210ms;" data-art-id="cyborg-oc"
-                  aria-label="Inspect Cybernetic Genesis OC">
+                  aria-label="Inspect Original Cyborg OC">
                   <img
                     src="images/New%20CYBORG%20OCConcept%20and%20style%20inspired%20by%20Masamune%20Shirows%20Ghost%20in%20the%20Shell%20Traditional%20ink.webp"
-                    alt="Cyborg Genesis OC" loading="lazy" />
-                  <span class="orbit-tooltip">Cyborg OC &bull; Genesis</span>
+                    alt="Original Cyborg OC" loading="lazy" />
+                  <span class="orbit-tooltip">Original Cyborg OC</span>
                 </button>
               </div>
 
@@ -438,7 +439,7 @@
               <span class="section-label">Curated Gallery</span>
               <h2 class="section-title" style="margin-bottom: 0;">Selected Works</h2>
             </div>
-            <div id="works-counter-total" class="works-counter-badge">19 Works</div>
+            <div id="works-counter-total" class="works-counter-badge">22 Works</div>
           </div>
 
           <!-- Interactive Category Filter Tabs -->
@@ -725,7 +726,7 @@
 
         <!-- Lightbox Footer Counter & Shortcuts Hint -->
         <div class="lightbox-footer-nav">
-          <span id="lightbox-counter" style="font-family: var(--font-mono); font-weight: 600;">01 / 19</span>
+          <span id="lightbox-counter" style="font-family: var(--font-mono); font-weight: 600;">01 / 22</span>
           <span style="font-size: 0.72rem; opacity: 0.7;">Use &larr; &rarr; keys to navigate &bull; Esc to close</span>
         </div>
       </div>
@@ -736,6 +737,7 @@
   <script src="js/artworks.js"></script>
   <script src="js/lightbox.js"></script>
   <script src="js/gallery.js"></script>
+  <script src="js/featured.js"></script>
   <script src="js/ambient.js"></script>
   <script src="js/main.js"></script>
 </body>

@@ -91,13 +91,17 @@ class ArtworkLightbox {
     }
   }
 
-  open(indexOrId) {
+  open(indexOrId, currentList = null) {
+    this.activeArtworks = (currentList && currentList.length > 0) ? currentList : this.artworks;
     let index = 0;
     if (typeof indexOrId === 'string') {
-      index = this.artworks.findIndex(a => a.id === indexOrId);
-      if (index === -1) index = 0;
+      index = this.activeArtworks.findIndex(a => a.id === indexOrId);
+      if (index === -1) {
+        index = this.activeArtworks.findIndex(a => a.originalId === indexOrId);
+        if (index === -1) index = 0;
+      }
     } else if (typeof indexOrId === 'number') {
-      index = Math.max(0, Math.min(indexOrId, this.artworks.length - 1));
+      index = Math.max(0, Math.min(indexOrId, this.activeArtworks.length - 1));
     }
 
     this.lastActiveElement = document.activeElement;
@@ -126,20 +130,24 @@ class ArtworkLightbox {
   }
 
   next() {
-    this.currentIndex = (this.currentIndex + 1) % this.artworks.length;
+    const list = this.activeArtworks || this.artworks;
+    this.currentIndex = (this.currentIndex + 1) % list.length;
     this.currentViewMode = 'primary';
     this.renderCurrentArtwork();
   }
 
   prev() {
-    this.currentIndex = (this.currentIndex - 1 + this.artworks.length) % this.artworks.length;
+    const list = this.activeArtworks || this.artworks;
+    this.currentIndex = (this.currentIndex - 1 + list.length) % list.length;
     this.currentViewMode = 'primary';
     this.renderCurrentArtwork();
   }
 
   setViewMode(mode) {
     this.currentViewMode = mode;
-    const item = this.artworks[this.currentIndex];
+    const list = this.activeArtworks || this.artworks;
+    const item = list[this.currentIndex];
+    if (!item) return;
 
     // Trigger smooth fade animation
     this.img.classList.remove('fade-cross');
@@ -161,7 +169,8 @@ class ArtworkLightbox {
   }
 
   renderCurrentArtwork() {
-    const item = this.artworks[this.currentIndex];
+    const list = this.activeArtworks || this.artworks;
+    const item = list[this.currentIndex];
     if (!item) return;
 
     // Update Image
@@ -181,7 +190,7 @@ class ArtworkLightbox {
     // Update Counter
     if (this.counterEl) {
       const cur = String(this.currentIndex + 1).padStart(2, '0');
-      const tot = String(this.artworks.length).padStart(2, '0');
+      const tot = String(list.length).padStart(2, '0');
       this.counterEl.textContent = `${cur} / ${tot}`;
     }
 
@@ -202,7 +211,7 @@ class ArtworkLightbox {
     if (this.processBar) {
       if (item.hasProcess && (item.processFile || item.altFile)) {
         this.processBar.style.display = 'flex';
-        this.primaryToggleBtn.textContent = 'Finished Art';
+        this.primaryToggleBtn.textContent = item.primaryLabel || 'Finished Art';
         this.primaryToggleBtn.classList.add('active');
 
         this.processToggleBtn.textContent = item.processLabel || 'Process View';
@@ -217,14 +226,15 @@ class ArtworkLightbox {
   }
 
   preloadAdjacentImages() {
-    const nextIdx = (this.currentIndex + 1) % this.artworks.length;
-    const prevIdx = (this.currentIndex - 1 + this.artworks.length) % this.artworks.length;
+    const list = this.activeArtworks || this.artworks;
+    const nextIdx = (this.currentIndex + 1) % list.length;
+    const prevIdx = (this.currentIndex - 1 + list.length) % list.length;
 
     const nextImg = new Image();
-    nextImg.src = 'images/' + encodeURIComponent(this.artworks[nextIdx].primaryFile);
+    nextImg.src = 'images/' + encodeURIComponent(list[nextIdx].primaryFile);
 
     const prevImg = new Image();
-    prevImg.src = 'images/' + encodeURIComponent(this.artworks[prevIdx].primaryFile);
+    prevImg.src = 'images/' + encodeURIComponent(list[prevIdx].primaryFile);
   }
 }
 
